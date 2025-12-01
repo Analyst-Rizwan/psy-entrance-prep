@@ -2,7 +2,7 @@ import { useState } from "react";
 import ModeSelector from "@/components/ModeSelector";
 import TestRunner from "@/components/TestRunner";
 import Review from "@/components/Review";
-import { QUESTION_POOL } from "@/data/questions";
+import { loadAllQuestions } from "@/lib/loadQuestions";
 import { generateTestForMode, TestMode, TestSession, TestResult } from "@/lib/testLogic";
 import { Button } from "@/components/ui/button";
 
@@ -14,7 +14,8 @@ export default function Index() {
   const [reviewData, setReviewData] = useState<TestResult | null>(null);
 
   const handleStart = (modeConfig: TestMode) => {
-    const session = generateTestForMode(modeConfig, QUESTION_POOL, "local-user");
+    const allQuestions = loadAllQuestions();
+    const session = generateTestForMode(modeConfig, allQuestions, "local-user");
     setTestSession(session);
     setReviewData(null);
     setScreen("test");
