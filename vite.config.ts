@@ -5,8 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // 👇 IMPORTANT: GitHub Pages hosts at /psy-entrance-prep/
-  base: mode === "production" ? "/psy-entrance-prep/" : "/",
+  base: "/",
 
   server: {
     host: "::",
