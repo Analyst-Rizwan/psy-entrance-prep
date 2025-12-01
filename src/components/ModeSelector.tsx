@@ -56,7 +56,7 @@ export default function ModeSelector({ onStart }: ModeSelectorProps) {
             <li>Negative marking: −0.5 for wrong answers</li>
           </ul>
           <Button
-            onClick={() => onStart({ type: "full", count: 2 })}
+            onClick={() => onStart({ type: "full", count: 120 })}
             className="w-full bg-gradient-primary shadow-glow-primary hover:opacity-90"
           >
             Start Full Mock

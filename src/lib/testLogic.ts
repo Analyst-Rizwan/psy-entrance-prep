@@ -111,15 +111,9 @@ export function generateTestForMode(
   let questions: Question[] = [];
 
   if (mode.type === "full") {
-    const SUBJECT_COUNT = mode.count || 20;
-    const subjects = Array.from(new Set(allQuestions.map((q) => q.subject)));
-
-    subjects.forEach((subject) => {
-      const pool = allQuestions.filter((q) => q.subject === subject);
-      if (pool.length === 0) return;
-      const chosen = chooseQuestionsWithNoRepeat(userId, pool, SUBJECT_COUNT);
-      questions = questions.concat(chosen);
-    });
+    const TOTAL_COUNT = mode.count || 120;
+    const chosen = chooseQuestionsWithNoRepeat(userId, allQuestions, TOTAL_COUNT);
+    questions = questions.concat(chosen);
   } else if (mode.type === "subject") {
     const pool = allQuestions.filter((q) => q.subject === mode.subject);
     const count = mode.count || 20;
